@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const AddUsers = () => {
     const [image, setImage] = useState(''); 
+    const [modal, setModal] = useState(false); 
     const [hostedImage, setHostedImage] = useState(''); 
     const handleChange = (e) =>{
         setImage(e.target.files[0]); 
@@ -35,8 +36,9 @@ const AddUsers = () => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data); 
+                setModal(true); 
             })
+            console.log(modal); 
         }
     return (
         <div>
@@ -86,9 +88,9 @@ const AddUsers = () => {
 
 
                                 <div class="form-control mt-6">
-                                    <input type='submit' value='Add to Database'
-                                        className='block w-full max-w-lg mx-auto mt-2 text-xl text-white btn btn-info'
-                                    />
+                                <label className='btn modal-button block w-full max-w-lg mx-auto mt-2 text-xl text-white btn-info' for="my-modal-3"><input type='submit' value='Add to Database'
+                                    /></label>
+                                    
                                     
                                 </div>
                             </form>
@@ -97,6 +99,19 @@ const AddUsers = () => {
                 </div>
             </div>
         </div>
+
+        {
+            modal && <div>
+                <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+            <div class="modal">
+              <div class="modal-box relative">
+                <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                <h3 class="text-lg font-bold text-green-400 flex justify-center">Congratulations!</h3>
+                <p class="py-4 flex justify-center text-red-400">User added to the database successfully</p>
+              </div>
+            </div>
+            </div>
+        }
 
     </div>
     );

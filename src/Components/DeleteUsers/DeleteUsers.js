@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+
 
 const DeleteUsers = () => {
     const [users, setUsers] = useState([]); 
@@ -19,6 +22,7 @@ const DeleteUsers = () => {
             console.log(data); 
             const restUser = users.filter(deletedUser => deletedUser._id !== id); 
             setUsers(restUser); 
+            toast.error('User is deleted successfully'); 
         })
         
     }
@@ -63,6 +67,7 @@ const DeleteUsers = () => {
                     }
                 </table>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

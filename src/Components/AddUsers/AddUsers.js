@@ -28,7 +28,8 @@ const AddUsers = () => {
                 setHostedImage(result?.data?.display_url); 
             })
             const usersInfo = { name, email, address, info, hostedImage}
-            fetch('http://localhost:4000/users', {
+            
+                fetch('http://localhost:4000/users', {
                 method: 'POST', 
                 headers: {
                     'content-type':'application/json'
@@ -40,6 +41,7 @@ const AddUsers = () => {
                 toast.success('User is added to the database'); 
                 console.log(data); 
             })
+            
         }
     return (
         <div>
